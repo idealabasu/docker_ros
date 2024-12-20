@@ -1,0 +1,18 @@
+<CycloneDDS>
+    <Domain>
+        <General>
+            <DontRoute>true</DontRoute>
+            <AllowMulticast>true</AllowMulticast>
+            <EnableMulticastLoopback>true</EnableMulticastLoopback>
+        </General>
+        <Discovery>
+          <ParticipantIndex>auto</ParticipantIndex>
+          <Peers>
+            <Peer Address="10.166.219.8"/>
+            <Peer Address="10.166.219.11"/>
+            <Peer Address="10.166.219.247"/>
+            <Peer Address="10.166.219.100"/>
+          </Peers>
+    </Discovery>
+    </Domain>
+</CycloneDDS>

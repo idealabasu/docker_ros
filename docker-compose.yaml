@@ -1,0 +1,49 @@
+services:
+  rdesktop:
+    #image: ros:humble
+    build: ./
+    container_name: ros-humble
+    hostname: ros-humble
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - ENV ROS_DOMAIN_ID=0
+      - ENV ROS_LOCALHOST_ONLY=0
+      - ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - ENV CYCLONEDDS_URI=/root/shared/cyclonedds_pc.xml
+
+  #  volumes:
+    
+     # - /home/danaukes/homes/ros-humble:/config
+     # - ./setup:/config/shared
+      #- /path/to/rdesktop/data:/config #optional
+      #- /home/danaukes/homes/rdesktop:/config
+    ports:
+      - 3390:3389
+    #devices:
+      #- /dev/dri:/dev/dri #optional
+    shm_size: "2gb" #optional
+    restart: unless-stopped
+    networks:
+      network:
+        ipv4_address: 192.168.1.7
+      bridge:
+    # command: bash -c "source /opt/ros/humble/setup.bash && sleep infinity"
+
+
+networks:
+  network:
+    driver: ipvlan
+    driver_opts:
+      parent: enp145s0f1
+      ipvlan-mode: l2
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24 
+          gateway: 192.168.1.1
+          ip_range: 192.168.1.0/24
+  bridge: {}
