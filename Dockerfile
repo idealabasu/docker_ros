@@ -42,3 +42,7 @@ RUN rosdep update
 # RUN echo "export ROS_DOMAIN_ID=0" >> /root/.bashrc && \
 # echo "export ROS_LOCALHOST_ONLY=0" >> /root/.bashrc && \
 # echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
+
+RUN apt update && apt install ros-humble-ur -y
+EXPOSE 50002
+RUN apt install -y ros-humble-ros2controlcli

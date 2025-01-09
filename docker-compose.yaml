@@ -23,6 +23,7 @@ services:
       #- /home/danaukes/homes/rdesktop:/config
     ports:
       - 3390:3389
+      - 50002:50002
     #devices:
       #- /dev/dri:/dev/dri #optional
     shm_size: "2gb" #optional
