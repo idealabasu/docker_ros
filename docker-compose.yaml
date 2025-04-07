@@ -15,10 +15,10 @@ services:
       - ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
       - ENV CYCLONEDDS_URI=/root/shared/cyclonedds_pc.xml
 
-  #  volumes:
+    volumes:
     
-     # - /home/danaukes/homes/ros-humble:/config
-     # - ./setup:/config/shared
+      - ./code:/code
+      # - ./setup:/config/shared
       #- /path/to/rdesktop/data:/config #optional
       #- /home/danaukes/homes/rdesktop:/config
     ports:

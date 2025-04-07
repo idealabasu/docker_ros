@@ -46,3 +46,5 @@ RUN rosdep update
 RUN apt update && apt install ros-humble-ur -y
 EXPOSE 50002
 RUN apt install -y ros-humble-ros2controlcli
+
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
