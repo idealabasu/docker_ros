@@ -30,21 +30,20 @@ RUN apt install -y \
   python3-rosdep \
   python3-setuptools \
   python3-vcstool \
+  nano \
   wget
+  
+RUN rosdep update
 
 # extra stuff for andrew's tutorial
-RUN apt install -y \
-  nano \
-  ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui  
-
-RUN rosdep update
+# RUN apt install -y \
+  #   ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui  
 
 # RUN echo "export ROS_DOMAIN_ID=0" >> /root/.bashrc && \
 # echo "export ROS_LOCALHOST_ONLY=0" >> /root/.bashrc && \
 # echo "source /opt/ros/humble/setup.bash" >> /root/.bashrc
 
-RUN apt update && apt install ros-humble-ur -y
-EXPOSE 50002
-RUN apt install -y ros-humble-ros2controlcli
+# RUN apt update && apt install ros-humble-ur -y
+# EXPOSE 50002
+# RUN apt install -y ros-humble-ros2controlcli
 
-echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
