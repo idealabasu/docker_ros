@@ -1,6 +1,7 @@
 services:
   rdesktop:
-    build: ./
+    image: ros:humble
+    #build: ./
     container_name: ros-humble
     hostname: ros-humble
     security_opt:
@@ -13,7 +14,13 @@ services:
       - ENV ROS_LOCALHOST_ONLY=0
       - ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
       - ENV CYCLONEDDS_URI=/root/shared/cyclonedds_pc.xml
-    volumes: []
+
+    volumes:
+    
+      - ./code:/code
+      # - ./setup:/config/shared
+      #- /path/to/rdesktop/data:/config #optional
+      #- /home/danaukes/homes/rdesktop:/config
     ports:
       - 3390:3389
       - 50002:50002
@@ -25,6 +32,9 @@ services:
       network:
         ipv4_address: 192.168.1.7
       bridge:
+    # command: bash -c "source /opt/ros/humble/setup.bash && sleep infinity"
+
+
 networks:
   network:
     driver: ipvlan
