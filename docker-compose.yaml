@@ -10,13 +10,11 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - ENV ROS_DOMAIN_ID=0
-      - ENV ROS_LOCALHOST_ONLY=0
-      - ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-      - ENV CYCLONEDDS_URI=/root/shared/cyclonedds_pc.xml
-
+      - ROS_DOMAIN_ID=0
+      - ROS_LOCALHOST_ONLY=0
+      - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+      - CYCLONEDDS_URI=/root/shared/cyclonedds_pc.xml
     volumes:
-    
       - ./code:/code
       # - ./setup:/config/shared
       #- /path/to/rdesktop/data:/config #optional
