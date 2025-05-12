@@ -9,32 +9,19 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Etc/UTC
-      - ENV ROS_DOMAIN_ID=0
-      - ENV ROS_LOCALHOST_ONLY=0
-      - ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-      - ENV CYCLONEDDS_URI=/root/shared/cyclonedds_pc.xml
-    volumes: []
+      - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      - ROS_SUPER_CLIENT=True
+      - ROS_DOMAIN_ID=0
+      #- ROS_DISCOVERY_SERVER="127.0.0.1:11811;"
+    volumes: 
+      - ./config.yaml:/code/config.yaml
+      - /dev/bus/usb:/dev/bus/usb
+    device_cgroup_rules:
+      - 'c 189:* rmw'
     ports:
       - 3390:3389
-      - 50002:50002
-    #devices:
-      #- /dev/dri:/dev/dri #optional
     shm_size: "2gb" #optional
     restart: unless-stopped
-    networks:
-      network:
-        ipv4_address: 192.168.1.7
-      bridge:
-networks:
-  network:
-    driver: ipvlan
-    driver_opts:
-      parent: enp145s0f1
-      ipvlan-mode: l2
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.1.0/24 
-          gateway: 192.168.1.1
-          ip_range: 192.168.1.0/24
-  bridge: {}
+    devices:
+      - /dev/ttyUSB0
+      - /dev/RPLIDAR

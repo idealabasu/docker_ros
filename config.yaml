@@ -1,0 +1,17 @@
+/oak:
+  ros__parameters:
+    rgb:
+      i_low_bandwidth: true
+    left:
+      i_low_bandwidth: true
+    right:
+      i_low_bandwidth: true
+    stereo:
+      i_low_bandwidth: true
+    camera:
+      i_enable_imu: false
+      i_enable_ir: false
+      i_nn_type: spatial
+      i_pipeline_type: RGBD
+      i_nn_type: none
+

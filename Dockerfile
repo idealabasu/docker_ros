@@ -47,3 +47,5 @@ RUN rosdep update
 # EXPOSE 50002
 # RUN apt install -y ros-humble-ros2controlcli
 
+RUN apt update && apt install -y ros-humble-depthai-ros
+RUN apt update && apt install -y ros-humble-rplidar-ros
